@@ -28,20 +28,17 @@ public class CRSApplication {
      */
 	
 	public static void main(String[] args) {
-		// Main Menu
 		// Main screen will have 4 things
 
 		Scanner sc = new Scanner(System.in);
 		CRSApplication crsApplication = new CRSApplication();
 		int choice;
 		do {
-			//System.out.println("\n\n_____________________________________________________________________________");
-			//System.out.println("");
-			System.out.println("----------------WELCOME TO COURSE REGISTRATION SYSTEM----------------");
-			System.out.println("                                                                     ");
-			System.out.println("----------------Student Menu----------------");
-			System.out.println("                                                                     ");
-			System.out.print("\nEnter 1 for Login\nEnter 2 to register yourself as a student \nEnter 3 to Update Password\nEnter 4 to exit CRS \nOption : ");
+			System.out.println("\n\n******************************************************************************");
+			System.out.println("");
+			System.out.println("                  WELCOME TO COURSE REGISTRATION SYSTEM !!                    ");
+			System.out.println("\n******************************************************************************");
+			System.out.print("\n1. Login\n2. Student Registration\n3. Update Password\n4. Exit\nOption : ");
 			choice = sc.nextInt();
 			switch (choice) {
 			case 1: // Login
@@ -67,14 +64,14 @@ public class CRSApplication {
 	public void login() {
 		Scanner sc = new Scanner(System.in);
 
-		System.out.println("\n\n\n");
+		System.out.println("\n\n_____________________________________________________________________________");
 		System.out.println("");
-		System.out.println("                                    Login for all users                              ");
-		System.out.println("\n\n");
+		System.out.println("                                    LOGIN                                    ");
+		System.out.println("_____________________________________________________________________________\n");
 		String email, password;
-		System.out.print("Please enter the Email address you used for registration:");
+		System.out.print("Email:");
 		email = sc.next();
-		System.out.print("Enter correct Password:");
+		System.out.print("Password:");
 		password = sc.next();
 		try {			
 			
@@ -94,7 +91,7 @@ public class CRSApplication {
 			
 			case ADMIN:
 
-				System.out.println("\n\nAdmin successfully logged in at " + formattedDate  +"You can now access all functions. ");
+				System.out.println("\n\nAdmin successfully logged in at " + formattedDate );
 				CRSAdmin admin=new CRSAdmin ();
 				admin.create_menu();
 				break;
@@ -114,14 +111,14 @@ public class CRSApplication {
 					student.create_menu(studentId);
 
 				} else {
-					System.err.print("\n Failed to login, Please contact admin \n ");
+					System.err.print("Failed to login, you have not been approved by the administration!");
 					loggedIn = false;
 				}
 				break;
 			}
 		}
 		catch(UserNotFoundException e) {
-			System.err.println("Invalid Credentials!, \n, Please try again");
+			System.err.println("Invalid Credentials!");
 		}			
 
 	}
@@ -134,22 +131,22 @@ public class CRSApplication {
 
 		String email, name, password, branchName, batch, contactNumber;
 		// input all the student details
-		System.out.println("\n\n");
+		System.out.println("\n\n_____________________________________________________________________________");
 		System.out.println("");
 		System.out.println("                           STUDENT REGISTRATION                              ");
-		System.out.println("\n\n");
-		System.out.print("Enter the Name:");
+		System.out.println("_____________________________________________________________________________\n");
+		System.out.print("Name:");
 		name = sc.nextLine();
-		System.out.print("Enter Contact: ");
+		System.out.print("Contact: ");
 		contactNumber = sc.nextLine();
-		System.out.print("Enter Email:");
+		System.out.print("Email:");
 		email = sc.next();
-		System.out.print("Choose a strong Password:");
+		System.out.print("Password:");
 		password = sc.next();
 		sc.nextLine();
-		System.out.print("Enter your Branch:");
+		System.out.print("Branch:");
 		branchName = sc.nextLine();
-		System.out.print("Enter your Batch:");
+		System.out.print("Batch:");
 		batch = sc.nextLine();
 
 		try {
@@ -167,13 +164,13 @@ public class CRSApplication {
 	public void updatePassword()
 	{
 		Scanner sc = new Scanner(System.in);
-		System.out.println("\n\n");
+		System.out.println("\n\n_____________________________________________________________________________");
 		System.out.println("");
 		System.out.println("                             UPDATE PASSWORD                                 ");
-		System.out.println("\n\n");
+		System.out.println("_____________________________________________________________________________\n");
 
 		String email, oldPassword, newPassword;
-		System.out.print("Enter the Email:");
+		System.out.print("Email:");
 		email = sc.next();
 		System.out.print("Old Password:");
 		oldPassword = sc.next();

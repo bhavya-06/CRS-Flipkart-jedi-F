@@ -3,7 +3,9 @@
  */
 package com.crs.flipkart.constants;
 
-
+/**
+ * class where all the commands to execute the corresponding SQL queries are defined
+ */
 public class SQLQueries {
 	
 	public static final String GET_USER_EMAIL_PASSWORD = "SELECT * FROM user JOIN role on user.userId=role.userId WHERE email = ? AND password = ?";
@@ -23,8 +25,7 @@ public class SQLQueries {
 	public static final String FETCH_COURSES = "select * from course";
 	
 	public static final String ADD_COURSE = "insert into course(courseId, courseName, courseFee, department, professorId, studentCount) values (?, ?, ?, ?,null,0)";
-
-
+	
 	public static final String DROP_COURSE = "delete from Course where courseId = ?";
 	
 	public static final String GET_PENDING_STUDENTS = "SELECT name,studentId from student where student.verificationStatus=0";
@@ -85,7 +86,6 @@ public class SQLQueries {
 	
 	public static final String FETCH_GRADE= "SELECT * FROM grade WHERE studentId = ? ";
 	
-	public static final String FETCH_NOTIFICATIONS = "select * from notification where studentId = ?";
 	
 	
 	

@@ -28,16 +28,17 @@ public class CRSProfessor {
 		int choice;
 		do {
 
-				System.out.println("\n\n");
+				System.out.println("\n\n_____________________________________________________________________________");
 				System.out.println("");
 				System.out.println("                           PROFESSOR DASHBOARD                               ");
-				System.out.println("Enter 1 to View Available Courses");
-				System.out.println("Enter 2 to View Selected Courses");
-				System.out.println("Enter 3 to Select Courses");
-				System.out.println("Enter 4  Grade Student");
-				System.out.println("Enter 5  View Enrolled Students");
-				System.out.println("Enter 6 Logout");
-				System.out.print("Select Option : ");
+				System.out.println("_____________________________________________________________________________\n");
+				System.out.println("1. View Available Courses");
+				System.out.println("2. View Selected Courses");
+				System.out.println("3. Select Courses");
+				System.out.println("4. Grade Student");
+				System.out.println("5. View Enrolled Students");
+				System.out.println("6. Logout");
+				System.out.print("Option : ");
 			
 				choice = sc.nextInt();
 			
@@ -71,7 +72,7 @@ public class CRSProfessor {
 					break;			
 					
 				default:
-					System.out.println("Incorrect Choice, Try again");
+					System.out.println("Incorrect Choice!");
 			}
 			
 		}while(CRSApplication.loggedIn);
@@ -111,7 +112,7 @@ public class CRSProfessor {
 		
 		if(courseList.size() == 0)
 		{
-			System.err.println("No Course selected");
+			System.err.println("You haven't selected any course yet");
 			return;
 		}
 		
@@ -124,11 +125,11 @@ public class CRSProfessor {
      */
 	public void selectCourses() {
 		// TODO Auto-generated method stub
-		System.out.print("Enter course Id for course selction: ");
+		System.out.print("Enter course Id for selecting course: ");
 		String courseId=sc.next();
 		try {			
 			professorService.indicateCourse(id, courseId);
-			System.out.println("Course selection done.");
+			System.out.println("Course selected successfully");
 		}
 		catch(Exception e) {
 			System.err.println("Error : " + e.getMessage());
@@ -142,19 +143,19 @@ public class CRSProfessor {
     */
 	public void gradeStudent() {
 		// TODO Auto-generated method stub
-		System.out.print("Please Enter the semester : ");
+		System.out.print("Enter the semester : ");
 		String semester=sc.next();
-		System.out.print("Please enter course ID : ");
+		System.out.print("Enter course ID : ");
 		String courseId=sc.next();
 		if(!professorService.validateCourse(courseId, id))
 		{
-			System.err.println("Sorry, You don't teach this course.");
+			System.err.println("You don't teach this course");
 			return;
 		}
 		List<Student> enrolledStudents = professorService.viewUngradedStudents(courseId);
 
 		if(enrolledStudents.size() == 0) {
-			System.err.println("All done for the day. No student left to be graded!");
+			System.err.println("No student left to be graded!");
 			return;
 		}
 		int i=1;
@@ -192,7 +193,7 @@ public class CRSProfessor {
 		String courseId=sc.next();
 		if(!professorService.validateCourse(courseId, id))
 		{
-			System.err.println("You don't teach this course. Try again.");
+			System.err.println("You don't teach this course");
 			return;
 		}
 		List<Student>enrolledStudents=professorService.viewEnrolledStudents(courseId);

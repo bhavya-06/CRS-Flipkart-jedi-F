@@ -3,21 +3,11 @@
  */
 package com.crs.flipkart.bean;
 
-
 public class PaymentNotification {
 
 	private String studentEnrollmentId;
 	private String referenceId;
 	private String message;
-
-	
-	
-	public PaymentNotification(String studentEnrollmentId, String referenceId, String message) {
-		super();
-		this.studentEnrollmentId = studentEnrollmentId;
-		this.referenceId = referenceId;
-		this.message = message;
-	}
 
 	/**
 	 * @return the studentEnrollmentId

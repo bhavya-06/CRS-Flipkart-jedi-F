@@ -12,7 +12,6 @@ import com.crs.flipkart.business.*;
 import com.crs.flipkart.exceptions.GradeCardNotGeneratedException;
 import com.crs.flipkart.validators.StudentValidator;
 
-
 public class CRSStudent {
 
 	Scanner sc = new Scanner(System.in);
@@ -32,16 +31,17 @@ public class CRSStudent {
 
 				submittedCourses = StudentValidator.submittedCourses(studentId);
 				feeStatus = StudentValidator.getFeeStatus(studentId);
-				System.out.println("\n\n");
+				System.out.println("\n\n**************************************************************************");
+				System.out.println("");
 				System.out.println("                              STUDENT DASHBOARD                              ");
-				System.out.println("Enter 1 to View Courses");
-				System.out.println("Enter 2 to Semester Registration");
-				System.out.println("Enter 3 to View Registered Courses");
-				System.out.println("Enter 4 to Make Payment");
-				System.out.println("Enter 5 to View grade card");
-				System.out.println("ENter 6 to View notifications");
-				System.out.println("ENter 7 to  Logout");
-				System.out.print("Make selection : ");
+				System.out.println("\n****************************************************************************\n");
+				System.out.println("1. View Courses");
+				System.out.println("2. Semester Registration");
+				System.out.println("3. View Registered Courses");
+				System.out.println("4. Make Payment");
+				System.out.println("5. View grade card");
+				System.out.println("6. Logout");
+				System.out.print("Option : ");
 			
 				choice = sc.nextInt();
 			
@@ -68,10 +68,6 @@ public class CRSStudent {
 					break;
 					
 				case 6:
-					viewNotifications(studentId);
-					break;
-					
-				case 7:
 					CRSApplication.loggedIn = false;
 					break;			
 					
@@ -84,6 +80,7 @@ public class CRSStudent {
 	
 	/**
 	 * Method to print a course
+	 * 
 	 * @param course : which is to be printed
 	 */
 	public static void printCourse(Course course)
@@ -92,16 +89,6 @@ public class CRSStudent {
 			System.out.println(String.format("%20s %20s %20s",course.getCourseId(), course.getCourseName()," "));
 		else
 			System.out.println(String.format("%20s %20s %20s",course.getCourseId(), course.getCourseName(),course.getProfessorId()));
-	}
-	
-	/**
-	 * Method to print notifications
-	 * @param notification : which is to be printed
-	 */
-	public static void printNotification(PaymentNotification notification)
-	{
-		
-		System.out.println(String.format("%30s %30s",notification.getReferenceId(),notification.getMessage()));
 	}
 	
 	/**
@@ -123,31 +110,6 @@ public class CRSStudent {
 		courseList.forEach(CRSStudent::printCourse);
 	}
 	
-	
-	/**
-	 * Method to display all the notifications
-	 */
-	public void viewNotifications(String studentID)
-	{
-		List<PaymentNotification> notificationList = new ArrayList<PaymentNotification>();
-		notificationList = studentService.viewNotifications(studentID);
-		
-		if(notificationList.size()==0)
-		{
-			System.err.println("No notifications as of now. Come back again!!");
-			return;
-		}
-		
-		System.out.println(String.format("%30s %30s ","Reference ID","Status"));
-		notificationList.forEach(CRSStudent::printNotification);
-		
-		
-	}
-	
-	
-	
-	
-	
 	/**
 	 * Method to display semester registration dash-board
 	 * 
@@ -163,15 +125,16 @@ public class CRSStudent {
 		int choice;
 		do
 		{
-			System.out.println("\n\n");
+			System.out.println("\n\n*************************************************************************");
 			System.out.println("");
-			System.out.println("                      SEMESTER REGISTRATION DASHBOARD                        \n");
-			System.out.println("Enter 1 to View Courses");
-			System.out.println("Enter 2 to Add Course");
-			System.out.println("Enter 3 to Drop Course");
-			System.out.println("ENter 4 to View Opted Courses");
-			System.out.println("Enter 5 to Submit the choices");
-			System.out.println("Enter 6 to  Exit");
+			System.out.println("                      SEMESTER REGISTRATION DASHBOARD                        ");
+			System.out.println("\n*****************************************************************************\n");
+			System.out.println("1. View Courses");
+			System.out.println("2. Add Course");
+			System.out.println("3. Drop Course");
+			System.out.println("4. View Opted Courses");
+			System.out.println("5. Submit the choices");
+			System.out.println("6. Exit");
 			System.out.print("Option : ");
 			choice = sc.nextInt();
 			switch(choice)
@@ -265,7 +228,7 @@ public class CRSStudent {
 	 * 
 	 * @param studentId of the student
 	 * @return returns a boolean that indicates if the courses are successfully alloted in the database
-	 */
+	*/
 	public boolean submitChoice(String studentID)
 	{
 		String status = semesterRegistrationService.submitOptedCourses(studentID);
@@ -358,9 +321,10 @@ public class CRSStudent {
 		try {			
 			GradeCard gradeCard = studentService.viewGradeCard(studentID);
 			
-			System.out.println("\n\n");
+			System.out.println("\n\n___________________________________________________________________");
 			System.out.println("");
-			System.out.println("                            GRADE CARD                             \n");          
+			System.out.println("                            GRADE CARD                             ");          
+			System.out.println("___________________________________________________________________\n");
 			System.out.println("ID : "+studentID+"\t\t\t\t\tSemester : "+gradeCard.getSemester() + "\n");
 //			System.out.println(String.format("%10s %10s ",studentID,"GPA"));
 			System.out.println(String.format("%25s %25s ","COURSE ID","GPA"));
@@ -369,7 +333,7 @@ public class CRSStudent {
 				System.out.println(String.format("%25s %25s ",grade.getCourseId(),grade.getStudentGrade()));
 			}
 			System.out.println("\n\t\t\t\tCGPA : "+gradeCard.getStudentCgpa());
-			System.out.println("\n");
+			System.out.println("\n___________________________________________________________________");
 		}
 		catch(GradeCardNotGeneratedException e) {
 			System.err.println("Error : " + e.getMessage());

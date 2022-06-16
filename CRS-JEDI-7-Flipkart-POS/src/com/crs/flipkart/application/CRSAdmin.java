@@ -109,7 +109,7 @@ public class CRSAdmin {
 	}
 	
 	/**
-     * method to add a course
+     * method for adding a course
      */
 	public void addCourse() {
 		// TODO Auto-generated method stub

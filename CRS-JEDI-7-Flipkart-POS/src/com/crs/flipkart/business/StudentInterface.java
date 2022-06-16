@@ -8,13 +8,8 @@ import java.util.List;
 import com.crs.flipkart.bean.Course;
 import com.crs.flipkart.bean.GradeCard;
 import com.crs.flipkart.bean.Payment;
-import com.crs.flipkart.bean.PaymentNotification;
 import com.crs.flipkart.exceptions.GradeCardNotGeneratedException;
 
-/**
- * @author jasan
- *
- */
 public interface StudentInterface {
 	
 	 /**
@@ -25,7 +20,6 @@ public interface StudentInterface {
      */
 	List<Course> viewRegisteredCourses(String studentID);
 	
-	public List<PaymentNotification> viewNotifications(String studentID);
 	/**
      * method for getting the total fee of all the courses opted by student
      * 
